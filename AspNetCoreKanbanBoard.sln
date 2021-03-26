@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreKanbanBoard", "AspNetCoreKanbanBoard\AspNetCoreKanbanBoard.csproj", "{3061C7E5-E869-4ECF-96D8-2EE36E294AAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3061C7E5-E869-4ECF-96D8-2EE36E294AAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3061C7E5-E869-4ECF-96D8-2EE36E294AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3061C7E5-E869-4ECF-96D8-2EE36E294AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3061C7E5-E869-4ECF-96D8-2EE36E294AAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC126E1E-EDD9-4918-9F9A-B44B00C39E3C}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<AspNetCoreKanbanBoard.Models.UserStory>
+
+<table class="table">
+    <thead class="text-center">
+
+        <tr>
+            <th>
+                <h1 class="display-4">To Do</h1>
+
+            </th>
+            <th>
+                <h1 class="display-4">Doing</h1>
+
+            </th>
+            <th>
+                <h1 class="display-4">Code Review</h1>
+
+            </th>
+            <th>
+                <h1 class="display-4">Done</h1>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @{foreach (var story in Model)
+                    {
+                        <div class="card mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">@story.Title</h5>
+                                <p class="card-text">@story.Description</p>
+                                <p class="card-text">@story.Estimation</p>
+                                <p class="card-text">@story.Priority</p>
+                                <p class="card-text">@story.UserEmail</p>
+                            </div>
+                        </div>
+                    }
+                }
+                @await Html.PartialAsync("_CreateStoryPartial", new UserStory())
+            </td>
+            <td>
+                @{foreach (var story in Model)
+                    {
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@story.Title</h5>
+                                <p class="card-text">@story.Description</p>
+                                <p class="card-text">@story.Estimation</p>
+                                <p class="card-text">@story.Priority</p>
+                                <p class="card-text">@story.UserEmail</p>
+                            </div>
+                        </div>
+                    }
+                }
+            </td>
+            <td>
+                @{foreach (var story in Model)
+                    {
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@story.Title</h5>
+                                <p class="card-text">@story.Description</p>
+                                <p class="card-text">@story.Estimation</p>
+                                <p class="card-text">@story.Priority</p>
+                                <p class="card-text">@story.UserEmail</p>
+                            </div>
+                        </div>
+                    }
+                }
+            </td>
+            <td>
+                @{foreach (var story in Model)
+                    {
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">@story.Title</h5>
+                                <p class="card-text">@story.Description</p>
+                                <p class="card-text">@story.Estimation</p>
+                                <p class="card-text">@story.Priority</p>
+                                <p class="card-text">@story.UserEmail</p>
+                            </div>
+                        </div>
+                    }
+                }
+            </td>
+        </tr>
+
+    </tbody>
+
+
+</table>
