@@ -7,5 +7,8 @@ namespace AspNetCoreKanbanBoard.Services
     {
         void AddStory(UserStory story);
         List<UserStory> GetAllStories();
+        void MoveUserStoryForward(UserStory story);
+        void MoveUserStoryBackward(UserStory story);
+        UserStory GetUserStoryById(int id);
     }
 }

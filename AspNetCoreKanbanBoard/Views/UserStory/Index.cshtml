@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AspNetCoreKanbanBoard.Models.UserStory>
+﻿@model IEnumerable<UserStory>
 
 <table class="table">
     <thead class="text-center">
@@ -26,7 +26,11 @@
             <td>
                 @{foreach (var story in Model)
                     {
-                        @await Html.PartialAsync("_CardInfoPartial", story)
+                        if (story.CurrentState == UserstoryState.ToDo)
+                        {
+
+                            @await Html.PartialAsync("_CardInfoPartial", story)
+                        }
                     }
                 }
                 @await Html.PartialAsync("_CreateStoryPartial", new UserStory())
@@ -34,7 +38,11 @@
             <td>
                 @{foreach (var story in Model)
                     {
-                        @await Html.PartialAsync("_CardInfoPartial", story)
+                        if (story.CurrentState == UserstoryState.Doing)
+                        {
+
+                            @await Html.PartialAsync("_CardInfoPartial", story)
+                        }
 
                     }
                 }
@@ -42,7 +50,11 @@
             <td>
                 @{foreach (var story in Model)
                     {
-                        @await Html.PartialAsync("_CardInfoPartial", story)
+                        if (story.CurrentState == UserstoryState.CodeReview)
+                        {
+
+                            @await Html.PartialAsync("_CardInfoPartial", story)
+                        }
 
                     }
                 }
@@ -50,7 +62,11 @@
             <td>
                 @{foreach (var story in Model)
                     {
-                        @await Html.PartialAsync("_CardInfoPartial", story)
+                        if (story.CurrentState == UserstoryState.Done)
+                        {
+
+                            @await Html.PartialAsync("_CardInfoPartial", story)
+                        }
 
                     }
                 }

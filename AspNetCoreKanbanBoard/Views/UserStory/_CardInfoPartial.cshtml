@@ -8,8 +8,26 @@
         <p class="card-text">@Model.Priority</p>
         <p class="card-text">@Model.UserEmail</p>
     </div>
-    <div>
-        <button type="button"><span class="glyphicon glyphicon-menu-left">Send to previous column</span></button>
-        <button type="button"><span class="glyphicon glyphicon-menu-right"></span> to next column</button>
+
+
+    <div class="card-footer d-flex justify-content-between">
+        <form method="post" asp-action="MoveUserStoryBackward" asp-route-id="@Model.Id">
+            @if (@Model.CurrentState != UserstoryState.ToDo)
+            {
+                <button type="submit" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+            }
+        </form>
+        <form method="post" asp-action="MoveUserStoryForward" asp-route-id="@Model.Id">
+            @if (@Model.CurrentState != UserstoryState.Done)
+            {
+                <button type="submit" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            }
+        </form>
     </div>
+    @*<button type="button"><span class="glyphicon glyphicon-menu-left"></span>Send to previous column</button>
+        <button type="button"><span class="glyphicon glyphicon-menu-right"></span> to next column</button>*@
 </div>

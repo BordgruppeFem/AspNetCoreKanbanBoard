@@ -54,6 +54,23 @@ namespace AspNetCoreKanbanBoard.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteRole(string id)
+        {
+            var role = await _roleManager.FindByIdAsync(id);
+
+            if (role is null)
+            {
+                ViewBag.ErrorMessage = $"Role with id = {id} cannot be found";
+                return View("NotFound");
+            }
+
+            await _roleManager.DeleteAsync(role);
+
+            var roles = _roleManager.Roles;
+            return View(nameof(Index), roles);
+        }
+
         [HttpGet]
         public IActionResult Index()
         {
