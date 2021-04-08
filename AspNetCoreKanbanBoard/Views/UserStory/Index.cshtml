@@ -26,15 +26,7 @@
             <td>
                 @{foreach (var story in Model)
                     {
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <h5 class="card-title">@story.Title</h5>
-                                <p class="card-text">@story.Description</p>
-                                <p class="card-text">@story.Estimation</p>
-                                <p class="card-text">@story.Priority</p>
-                                <p class="card-text">@story.UserEmail</p>
-                            </div>
-                        </div>
+                        @await Html.PartialAsync("_CardInfoPartial", story)
                     }
                 }
                 @await Html.PartialAsync("_CreateStoryPartial", new UserStory())
@@ -42,45 +34,24 @@
             <td>
                 @{foreach (var story in Model)
                     {
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">@story.Title</h5>
-                                <p class="card-text">@story.Description</p>
-                                <p class="card-text">@story.Estimation</p>
-                                <p class="card-text">@story.Priority</p>
-                                <p class="card-text">@story.UserEmail</p>
-                            </div>
-                        </div>
+                        @await Html.PartialAsync("_CardInfoPartial", story)
+
                     }
                 }
             </td>
             <td>
                 @{foreach (var story in Model)
                     {
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">@story.Title</h5>
-                                <p class="card-text">@story.Description</p>
-                                <p class="card-text">@story.Estimation</p>
-                                <p class="card-text">@story.Priority</p>
-                                <p class="card-text">@story.UserEmail</p>
-                            </div>
-                        </div>
+                        @await Html.PartialAsync("_CardInfoPartial", story)
+
                     }
                 }
             </td>
             <td>
                 @{foreach (var story in Model)
                     {
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">@story.Title</h5>
-                                <p class="card-text">@story.Description</p>
-                                <p class="card-text">@story.Estimation</p>
-                                <p class="card-text">@story.Priority</p>
-                                <p class="card-text">@story.UserEmail</p>
-                            </div>
-                        </div>
+                        @await Html.PartialAsync("_CardInfoPartial", story)
+
                     }
                 }
             </td>

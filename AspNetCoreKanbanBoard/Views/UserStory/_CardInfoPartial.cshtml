@@ -1,0 +1,15 @@
+﻿@model AspNetCoreKanbanBoard.Models.UserStory
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Title</h5>
+        <p class="card-text">@Model.Description</p>
+        <p class="card-text">@Model.Estimation</p>
+        <p class="card-text">@Model.Priority</p>
+        <p class="card-text">@Model.UserEmail</p>
+    </div>
+    <div>
+        <button type="button"><span class="glyphicon glyphicon-menu-left">Send to previous column</span></button>
+        <button type="button"><span class="glyphicon glyphicon-menu-right"></span> to next column</button>
+    </div>
+</div>

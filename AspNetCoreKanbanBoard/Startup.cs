@@ -38,22 +38,23 @@ namespace AspNetCoreKanbanBoard
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddAuthorization();
             services.AddSingleton<IFakeUserStoriesRepository, FakeUserStoriesRepository>();
 
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("AdminAccess", policy => policy.RequireRole("Admin"));
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("AdminAccess", policy => policy.RequireRole("Admin"));
 
-                options.AddPolicy("ManagerAccess", policy =>
-                policy.RequireAssertion(context =>
-                context.User.IsInRole("Admin") || context.User.IsInRole("Manager")));
+            //    options.AddPolicy("ManagerAccess", policy =>
+            //    policy.RequireAssertion(context =>
+            //    context.User.IsInRole("Admin") || context.User.IsInRole("Manager")));
 
-                options.AddPolicy("UserAccess", policy =>
-                    policy.RequireAssertion(context =>
-                                context.User.IsInRole("Admin")
-                                || context.User.IsInRole("Manager")
-                                || context.User.IsInRole("User")));
-            });
+            //    options.AddPolicy("UserAccess", policy =>
+            //        policy.RequireAssertion(context =>
+            //                    context.User.IsInRole("Admin")
+            //                    || context.User.IsInRole("Manager")
+            //                    || context.User.IsInRole("User")));
+            //});
 
             services.AddControllersWithViews();
             services.AddAuthentication()
@@ -83,6 +84,8 @@ namespace AspNetCoreKanbanBoard
             app.UseStaticFiles();
 
             app.UseRouting();
+
+
 
             app.UseAuthentication();
             app.UseAuthorization();
