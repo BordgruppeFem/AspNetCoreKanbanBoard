@@ -1,12 +1,29 @@
 ﻿@model AspNetCoreKanbanBoard.Models.UserStory
 
 <div class="card mb-3">
+    <div class="d-flex justify-content-between card-header">
+
+        <a asp-action="Edit" asp-route-id="@Model.Id" class=" btn btn-secondary float-right"><i class="fas fa-edit"></i></a>
+
+        <form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+            <button type="submit" class=" btn btn-danger float-right"><i class="fas fa-trash"></i></button>
+        </form>
+    </div>
     <div class="card-body">
         <h5 class="card-title">@Model.Title</h5>
+
+        <label class="lead" asp-for="Description">Description</label>
         <p class="card-text">@Model.Description</p>
+
+        <label class="lead" asp-for="Estimation">Estimation</label>
         <p class="card-text">@Model.Estimation</p>
+
+        <label class="lead" asp-for="Priority">Priority</label>
         <p class="card-text">@Model.Priority</p>
+
+        <label class="lead" asp-for="UserEmail">User</label>
         <p class="card-text">@Model.UserEmail</p>
+
     </div>
 
 

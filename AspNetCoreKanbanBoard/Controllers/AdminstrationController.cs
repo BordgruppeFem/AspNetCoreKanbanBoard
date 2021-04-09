@@ -67,8 +67,7 @@ namespace AspNetCoreKanbanBoard.Controllers
 
             await _roleManager.DeleteAsync(role);
 
-            var roles = _roleManager.Roles;
-            return View(nameof(Index), roles);
+            return View(nameof(Index), _roleManager.Roles);
         }
 
         [HttpGet]

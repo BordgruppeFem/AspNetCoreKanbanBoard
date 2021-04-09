@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using AspNetCoreKanbanBoard.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,7 @@ namespace AspNetCoreKanbanBoard.Data
             : base(options)
         {
         }
+
+        public virtual DbSet<UserStory> UserStories { get; set; }
     }
 }
