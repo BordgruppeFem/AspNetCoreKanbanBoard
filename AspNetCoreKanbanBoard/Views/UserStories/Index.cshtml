@@ -1,69 +1,88 @@
 ﻿@model IEnumerable<UserStory>
 
 <div class="d-flex justify-content-center mb-2">
-    <a class="btn btn-outline-dark " asp-controller="UserStories" asp-action="Create">Create new userstory</a>
+    <a class="btn btn-outline-primary btn-lg btn-block my-3" asp-controller="UserStories" asp-action="Create">Create new userstory</a>
 </div>
 
-<table class="table">
-    <thead class="text-center">
+@if (Model.Count() > 0)
+{
+    <table class="table table-bordered">
+        <thead class="text-center">
 
-        <tr>
-            <th>
-                <h1 class="display-4">To Do</h1>
+            <tr>
+                <th>
+                    <h1 class="display-4">To Do</h1>
 
-            </th>
-            <th>
-                <h1 class="display-4">Doing</h1>
+                </th>
+                <th>
+                    <h1 class="display-4">Doing</h1>
 
-            </th>
-            <th>
-                <h1 class="display-4">Code Review</h1>
+                </th>
+                <th>
+                    <h1 class="display-4">Code Review</h1>
 
-            </th>
-            <th>
-                <h1 class="display-4">Done</h1>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            @foreach (var story in Model)
-            {
-                <td>
-                    @if (story.CurrentState == UserstoryState.ToDo)
+                </th>
+                <th>
+                    <h1 class="display-4">Done</h1>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr>
+                <td style="width:25%;">
+                    @foreach (var story in Model)
                     {
-                        @await Html.PartialAsync("_CardInfoPartial", story)
+                        @if (story.CurrentState == UserstoryState.ToDo)
+                        {
+                            @await Html.PartialAsync("_CardInfoPartial", story)
+                        }
+                    }
+                </td>
+                <td style="width:25%;">
+
+                    @foreach (var story in Model)
+                    {
+                        @if (story.CurrentState == UserstoryState.Doing)
+                        {
+                            @await Html.PartialAsync("_CardInfoPartial", story)
+                        }
                     }
 
                 </td>
-                <td>
+                <td style="width:25%;">
 
-                    @if (story.CurrentState == UserstoryState.Doing)
+                    @foreach (var story in Model)
                     {
-                        @await Html.PartialAsync("_CardInfoPartial", story)
+                        @if (story.CurrentState == UserstoryState.CodeReview)
+                        {
+                            @await Html.PartialAsync("_CardInfoPartial", story)
+                        }
                     }
 
                 </td>
-                <td>
+                <td style="width:25%;">
 
-                    @if (story.CurrentState == UserstoryState.CodeReview)
+                    @foreach (var story in Model)
                     {
-
-                        @await Html.PartialAsync("_CardInfoPartial", story)
-                    }
-
-                </td>
-                <td>
-
-                    @if (story.CurrentState == UserstoryState.Done)
-                    {
-                        @await Html.PartialAsync("_CardInfoPartial", story)
+                        @if (story.CurrentState == UserstoryState.Done)
+                        {
+                            @await Html.PartialAsync("_CardInfoPartial", story)
+                        }
                     }
                 </td>
-            }
-        </tr>
-
-    </tbody>
+            </tr>
 
 
-</table>
+        </tbody>
+
+
+    </table>
+}
+else
+{
+    <div class="d-flex justify-content-center" >
+
+    <h5 class="display-4">Currently no userstories, create some :)</h5>
+    </div>
+}
