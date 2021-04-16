@@ -98,9 +98,9 @@ namespace AspNetCoreKanbanBoard.Services
                     // TODO Send Email
                     emailSender.SendEmailAsync(new Message()
                     { 
-                        Content = "Hallo",
-                        To = new List<MailboxAddress>() { new MailboxAddress("Kasper1300@hotmail.com") },
-                        Subject = "HEY?"
+                        Content = $"{story.Title} has been moved to 'Done'",
+                        To = new List<MailboxAddress>() { new MailboxAddress(story.UserEmail) },
+                        Subject = $"{story.Title} Done"
                     });
                     break;
                 default:

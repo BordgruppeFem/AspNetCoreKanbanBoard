@@ -10,9 +10,11 @@ using AspNetCoreKanbanBoard.Models;
 using Microsoft.AspNetCore.Identity;
 using AspNetCoreKanbanBoard.Services;
 using EmailSender;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AspNetCoreKanbanBoard.Controllers
 {
+    [Authorize]
     public class UserStoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -47,8 +49,12 @@ namespace AspNetCoreKanbanBoard.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Users, "Id", "Id", userStory.UserId);
             return View(userStory);
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
         }
 
         // GET: UserStories/Edit/5
