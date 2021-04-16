@@ -3,7 +3,10 @@ using AspNetCoreKanbanBoard.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using EmailSender;
 using System.Threading.Tasks;
+using MimeKit;
+using NETCore.MailKit.Core;
 
 namespace AspNetCoreKanbanBoard.Services
 {
@@ -16,6 +19,7 @@ namespace AspNetCoreKanbanBoard.Services
         {
             //UserStoryViewModel = userStoryViewModel;
             //UserStoryViewModel = userStoryViewModel;
+
 
             UserStories = new List<UserStory>();
             UserStories.Add(new UserStory
@@ -79,7 +83,7 @@ namespace AspNetCoreKanbanBoard.Services
             UserStories.Add(story);
         }
 
-        public void MoveUserStoryForward(UserStory story)
+        public void MoveUserStoryForward(UserStory story, IEmailSender emailSender)
         {
             switch (story.CurrentState)
             {
@@ -91,6 +95,13 @@ namespace AspNetCoreKanbanBoard.Services
                     break;
                 case UserstoryState.CodeReview:
                     story.CurrentState = UserstoryState.Done;
+                    // TODO Send Email
+                    emailSender.SendEmailAsync(new Message()
+                    { 
+                        Content = "Hallo",
+                        To = new List<MailboxAddress>() { new MailboxAddress("Kasper1300@hotmail.com") },
+                        Subject = "HEY?"
+                    });
                     break;
                 default:
                     break;

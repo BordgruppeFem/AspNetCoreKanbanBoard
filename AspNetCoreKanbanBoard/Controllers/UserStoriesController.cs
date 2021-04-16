@@ -9,6 +9,7 @@ using AspNetCoreKanbanBoard.Data;
 using AspNetCoreKanbanBoard.Models;
 using Microsoft.AspNetCore.Identity;
 using AspNetCoreKanbanBoard.Services;
+using EmailSender;
 
 namespace AspNetCoreKanbanBoard.Controllers
 {
@@ -16,12 +17,12 @@ namespace AspNetCoreKanbanBoard.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IFakeUserStoriesRepository _fakeUserStoriesRepository;
-
-        public UserStoriesController(ApplicationDbContext context, IFakeUserStoriesRepository fakeUserStoriesRepository)
+        private readonly IEmailSender _emailSender;
+        public UserStoriesController(ApplicationDbContext context, IFakeUserStoriesRepository fakeUserStoriesRepository, IEmailSender emailSender)
         {
             _context = context;
             _fakeUserStoriesRepository = fakeUserStoriesRepository;
-
+            _emailSender = emailSender;
         }
 
         // GET: UserStories
@@ -125,7 +126,7 @@ namespace AspNetCoreKanbanBoard.Controllers
         public async Task<IActionResult> MoveUserStoryForward(int id)
         {
             UserStory story = _context.UserStories.FirstOrDefault(i => i.Id == id);
-            _fakeUserStoriesRepository.MoveUserStoryForward(story);
+            _fakeUserStoriesRepository.MoveUserStoryForward(story, _emailSender);
             _context.Update(story);
             await _context.SaveChangesAsync();
 

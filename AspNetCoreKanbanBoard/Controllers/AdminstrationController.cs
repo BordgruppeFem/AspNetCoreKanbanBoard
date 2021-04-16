@@ -14,6 +14,7 @@ namespace AspNetCoreKanbanBoard.Controllers
     [Authorize(Roles = "Admin")]
     public class AdminstrationController : Controller
     {
+       
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<IdentityUser> _userManager;
 
@@ -26,6 +27,7 @@ namespace AspNetCoreKanbanBoard.Controllers
 
         public IActionResult CreateRole()
         {
+            
             return View();
         }
 
